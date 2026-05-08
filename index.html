@@ -1,0 +1,339 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Suicune Neon</title>
+
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg,#050816,#0f172a,#111827);
+      min-height:100vh;
+      color:white;
+      overflow:hidden;
+      position:relative;
+    }
+
+    /* ===== PARTICULAS ===== */
+
+    .particles{
+      position:fixed;
+      width:100%;
+      height:100%;
+      top:0;
+      left:0;
+      overflow:hidden;
+      z-index:0;
+    }
+
+    .particle{
+      position:absolute;
+      display:block;
+      width:6px;
+      height:6px;
+      background:#00e5ff;
+      border-radius:50%;
+      box-shadow:
+      0 0 10px #00e5ff,
+      0 0 20px #00e5ff,
+      0 0 40px #00e5ff;
+
+      animation: float linear infinite;
+      opacity:0.7;
+    }
+
+    @keyframes float{
+
+      from{
+        transform:translateY(100vh) scale(0);
+      }
+
+      to{
+        transform:translateY(-10vh) scale(1);
+      }
+    }
+
+    /* ===== CONTENIDO ===== */
+
+    .contenido{
+      position:relative;
+      z-index:2;
+    }
+
+    h1{
+      text-align:center;
+      margin-top:30px;
+      font-size:3rem;
+      color:#00e5ff;
+
+      text-shadow:
+      0 0 10px #00e5ff,
+      0 0 20px #00e5ff,
+      0 0 40px #00e5ff;
+
+      animation: glow 2s infinite alternate;
+    }
+
+    @keyframes glow{
+
+      from{
+        text-shadow:
+        0 0 10px #00e5ff,
+        0 0 20px #00e5ff;
+      }
+
+      to{
+        text-shadow:
+        0 0 20px #00e5ff,
+        0 0 40px #00e5ff,
+        0 0 80px #00e5ff;
+      }
+    }
+
+    .contenedor{
+      display:flex;
+      justify-content:center;
+      align-items:center;
+      gap:40px;
+      flex-wrap:wrap;
+      padding:50px;
+    }
+
+    .card{
+      width:320px;
+      background:rgba(255,255,255,0.05);
+      border:2px solid rgba(0,229,255,0.4);
+      backdrop-filter: blur(10px);
+      border-radius:20px;
+      overflow:hidden;
+      transition:0.4s;
+      position:relative;
+
+      box-shadow:
+      0 0 20px rgba(0,229,255,0.3);
+    }
+
+    .card:hover{
+
+      transform:translateY(-10px) scale(1.03);
+
+      box-shadow:
+      0 0 25px #00e5ff,
+      0 0 50px rgba(0,229,255,0.5);
+    }
+
+    .card h2{
+      text-align:center;
+      padding:15px;
+      color:#00e5ff;
+      letter-spacing:2px;
+    }
+
+    img{
+      width:100%;
+      height:250px;
+      object-fit:cover;
+      cursor:pointer;
+      transition:0.5s;
+    }
+
+    img:hover{
+      transform:scale(1.08);
+      filter:brightness(1.2);
+    }
+
+    .card::before{
+      content:"";
+      position:absolute;
+      top:-50%;
+      left:-50%;
+      width:200%;
+      height:200%;
+
+      background:linear-gradient(
+      45deg,
+      transparent,
+      rgba(0,229,255,0.2),
+      transparent
+      );
+
+      transform:rotate(25deg);
+      animation: shine 5s linear infinite;
+    }
+
+    @keyframes shine{
+
+      0%{
+        transform:translateX(-100%) rotate(25deg);
+      }
+
+      100%{
+        transform:translateX(100%) rotate(25deg);
+      }
+    }
+
+    /* ===== BATTLE MODE ===== */
+
+    .battle-mode{
+      transition:0.4s;
+    }
+
+    .battle-mode:hover{
+
+      border:2px solid red;
+
+      transform:translateY(-10px) scale(1.05);
+
+      box-shadow:
+      0 0 20px red,
+      0 0 40px red,
+      0 0 80px rgba(255,0,0,0.8);
+    }
+
+    .battle-mode:hover h2{
+
+      color:#ff3b3b;
+
+      text-shadow:
+      0 0 10px red,
+      0 0 20px red;
+    }
+
+    .battle-mode:hover::before{
+
+      background:linear-gradient(
+      45deg,
+      transparent,
+      rgba(255,0,0,0.3),
+      transparent
+      );
+    }
+
+    /* ===== RESPONSIVE ===== */
+
+    @media (max-width:768px){
+
+      h1{
+        font-size:2rem;
+      }
+
+      .contenedor{
+        padding:20px;
+        gap:25px;
+      }
+
+      .card{
+        width:100%;
+        max-width:320px;
+      }
+
+      img{
+        height:220px;
+      }
+
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- PARTICULAS -->
+  <div class="particles">
+
+    <span class="particle" style="left:10%; animation-duration:10s;"></span>
+    <span class="particle" style="left:20%; animation-duration:14s;"></span>
+    <span class="particle" style="left:30%; animation-duration:9s;"></span>
+    <span class="particle" style="left:40%; animation-duration:13s;"></span>
+    <span class="particle" style="left:50%; animation-duration:11s;"></span>
+    <span class="particle" style="left:60%; animation-duration:15s;"></span>
+    <span class="particle" style="left:70%; animation-duration:8s;"></span>
+    <span class="particle" style="left:80%; animation-duration:12s;"></span>
+    <span class="particle" style="left:90%; animation-duration:10s;"></span>
+
+  </div>
+
+  <!-- CONTENIDO -->
+  <div class="contenido">
+
+    <h1>SUICUNE 💧</h1>
+
+    <div class="contenedor">
+
+      <!-- CARD NORMAL -->
+
+      <div class="card">
+
+        <h2>Suicune</h2>
+
+        <img
+        src="https://images.wikidexcdn.net/mwuploads/wikidex/e/e9/latest/20240111220424/Suicune_caminando_en_el_agua.jpg"
+        onclick="playSound()">
+
+      </div>
+
+      <!-- BATTLE MODE -->
+
+      <div class="card battle-mode">
+
+        <h2>Battle Mode</h2>
+
+        <img
+        src="Style/suicune.jpg"
+        onclick="playSonido()">
+
+      </div>
+
+    </div>
+
+  </div>
+
+<script>
+
+  let audio1 = new Audio("Sounds/Suicune.mp3");
+  let audio2 = new Audio("Sounds/pelea.mp3");
+
+  function playSound(){
+
+    if(audio1.paused){
+
+      audio2.pause();
+      audio2.currentTime = 0;
+
+      audio1.play();
+
+    }else{
+
+      audio1.pause();
+      audio1.currentTime = 0;
+    }
+  }
+
+  function playSonido(){
+
+    if(audio2.paused){
+
+      audio1.pause();
+      audio1.currentTime = 0;
+
+      audio2.play();
+
+    }else{
+
+      audio2.pause();
+      audio2.currentTime = 0;
+    }
+  }
+
+</script>
+
+</body>
+</html>
