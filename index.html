@@ -41,6 +41,7 @@
       height:6px;
       background:#00e5ff;
       border-radius:50%;
+
       box-shadow:
       0 0 10px #00e5ff,
       0 0 20px #00e5ff,
@@ -180,25 +181,21 @@
       }
     }
 
-    /* ===== BATTLE MODE ===== */
+    /* ===== BATTLE MODE CLICK ===== */
 
-    .battle-mode{
-      transition:0.4s;
-    }
+    .battle-active{
 
-    .battle-mode:hover{
-
-      border:2px solid red;
+      border:2px solid red !important;
 
       transform:translateY(-10px) scale(1.05);
 
       box-shadow:
       0 0 20px red,
       0 0 40px red,
-      0 0 80px rgba(255,0,0,0.8);
+      0 0 80px rgba(255,0,0,0.8) !important;
     }
 
-    .battle-mode:hover h2{
+    .battle-active h2{
 
       color:#ff3b3b;
 
@@ -207,7 +204,7 @@
       0 0 20px red;
     }
 
-    .battle-mode:hover::before{
+    .battle-active::before{
 
       background:linear-gradient(
       45deg,
@@ -238,7 +235,6 @@
       img{
         height:220px;
       }
-
     }
 
   </style>
@@ -247,6 +243,7 @@
 <body>
 
   <!-- PARTICULAS -->
+
   <div class="particles">
 
     <span class="particle" style="left:10%; animation-duration:10s;"></span>
@@ -262,9 +259,10 @@
   </div>
 
   <!-- CONTENIDO -->
+
   <div class="contenido">
 
-    <h1>SUICUNE 💧</h1>
+    <h1>SUICUNE 💧❄️</h1>
 
     <div class="contenedor">
 
@@ -282,7 +280,7 @@
 
       <!-- BATTLE MODE -->
 
-      <div class="card battle-mode">
+      <div class="card" id="battleCard">
 
         <h2>Battle Mode</h2>
 
@@ -301,7 +299,11 @@
   let audio1 = new Audio("Sounds/Suicune.mp3");
   let audio2 = new Audio("Sounds/pelea.mp3");
 
+  const battleCard = document.getElementById("battleCard");
+
   function playSound(){
+
+    battleCard.classList.remove("battle-active");
 
     if(audio1.paused){
 
@@ -326,10 +328,14 @@
 
       audio2.play();
 
+      battleCard.classList.add("battle-active");
+
     }else{
 
       audio2.pause();
       audio2.currentTime = 0;
+
+      battleCard.classList.remove("battle-active");
     }
   }
 
