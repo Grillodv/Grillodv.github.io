@@ -367,3 +367,31 @@ button:hover{
     transform:translateX(0px);
   }
 }
+
+/* ===== BOTON ATAQUE AZUL ===== */
+
+#attackButton{
+
+  background:#00bfff !important;
+
+  color:white !important;
+
+  box-shadow:
+  0 0 10px #00bfff,
+  0 0 20px #00bfff,
+  0 0 40px rgba(0,191,255,0.8) !important;
+}
+
+/* HOVER */
+
+#attackButton:hover{
+
+  background:#38d9ff !important;
+
+  transform:scale(1.05);
+
+  box-shadow:
+  0 0 20px #38d9ff,
+  0 0 40px #38d9ff,
+  0 0 80px rgba(56,217,255,0.9) !important;
+}
